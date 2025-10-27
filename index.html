@@ -67,79 +67,6 @@
             position: relative;
         }
         
-        /* VRS Corner Button - ROT und GRÖSSER */
-        .vrs-corner {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 180px;
-            height: 180px;
-            overflow: hidden;
-            z-index: 9999;
-            pointer-events: none;
-        }
-        
-        .vrs-corner-bg {
-            position: absolute;
-            top: -90px;
-            right: -90px;
-            width: 360px;
-            height: 360px;
-            background: var(--vrs-red);
-            border-radius: 50%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .vrs-corner:hover .vrs-corner-bg {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
-        }
-        
-        .vrs-corner-icon {
-            position: absolute;
-            top: 45px;
-            right: 45px;
-            color: white;
-            font-size: 4rem;
-            z-index: 2;
-            transition: all 0.3s ease;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
-        }
-        
-        .vrs-corner:hover .vrs-corner-icon {
-            transform: scale(1.2) rotate(10deg);
-        }
-        
-        .vrs-corner-text {
-            position: absolute;
-            top: 110px;
-            right: 55px;
-            color: white;
-            font-size: 1.4rem;
-            font-weight: bold;
-            z-index: 2;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
-            font-family: Arial, sans-serif;
-        }
-        
-        .vrs-corner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
-            transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            transition: transform 0.6s ease;
-            z-index: 1;
-        }
-        
-        .vrs-corner:hover::before {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
-        
         header {
             text-align: center;
             margin-bottom: 30px;
@@ -1064,12 +991,6 @@
     </style>
 </head>
 <body>
-    <!-- VRS Corner Button - ROT und GRÖSSER -->
-    <div class="vrs-corner">
-        <div class="vrs-corner-bg"></div>
-        <i class="fas fa-bus vrs-corner-icon"></i>
-        <div class="vrs-corner-text">VRS</div>
-    </div>
 
     <div class="container">
         <header>
