@@ -42,7 +42,7 @@
             line-height: 1.6;
             color: #333;
             background: 
-                linear-gradient(135deg, rgba(245, 247, 250, 0.9) 0%, rgba(195, 207, 226, 0.9) 100%),
+                linear-gradient(135deg, rgba(245, 247, 250, 0.7) 0%, rgba(195, 207, 226, 0.7) 100%),
                 url('hintergrund.webp') center/cover no-repeat fixed;
             padding: 20px;
             min-height: 100vh;
@@ -56,8 +56,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(2px);
+            background: rgba(255, 255, 255, 0.05); /* Reduzierte Deckkraft */
+            backdrop-filter: blur(1px); /* Weniger Blur */
             z-index: -1;
         }
         
@@ -67,7 +67,7 @@
             position: relative;
         }
         
-        /* VRS Corner Button mit Font Awesome */
+        /* VRS Corner Button mit Font Awesome - HALBRUND */
         .vrs-corner {
             position: fixed;
             top: 0;
@@ -79,22 +79,19 @@
             pointer-events: none;
         }
         
-        .vrs-corner-bg {
+        .vrs-corner svg {
             position: absolute;
-            top: -75px;
-            right: -75px;
-            width: 300px;
-            height: 300px;
-            background: var(--vrs-red);
-            transform: rotate(45deg);
-            transform-origin: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
             transition: all 0.3s ease;
         }
         
-        .vrs-corner:hover .vrs-corner-bg {
-            transform: rotate(45deg) scale(1.1);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+        .vrs-corner:hover svg {
+            transform: scale(1.05);
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
         }
         
         .vrs-corner-icon {
@@ -145,7 +142,7 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
@@ -232,7 +229,7 @@
         }
         
         .overview-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -344,7 +341,7 @@
         }
         
         .card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -490,7 +487,7 @@
         }
         
         .chart-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -633,7 +630,7 @@
         }
         
         .recommendations {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -768,7 +765,7 @@
         }
         
         .insight-box {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
@@ -840,7 +837,7 @@
             padding: 30px 25px;
             color: var(--dark);
             font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             margin-top: 20px;
@@ -888,7 +885,7 @@
         }
         
         .comment-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -1061,9 +1058,12 @@
     </style>
 </head>
 <body>
-    <!-- VRS Corner Button mit Font Awesome -->
+    <!-- VRS Corner Button mit Font Awesome - HALBRUND -->
     <div class="vrs-corner">
-        <div class="vrs-corner-bg"></div>
+        <svg width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
+            <path d="M0,0 L150,0 L150,150 L0,150 Z" fill="var(--vrs-red)"/>
+            <path d="M150,0 A150,150 0 0 1 0,150 L0,150 L150,150 Z" fill="var(--vrs-red)"/>
+        </svg>
         <i class="fas fa-bus vrs-corner-icon"></i>
         <div class="vrs-corner-text">VRS</div>
     </div>
