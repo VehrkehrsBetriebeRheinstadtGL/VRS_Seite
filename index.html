@@ -41,9 +41,24 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e3e9f5 100%);
+            background: 
+                linear-gradient(135deg, rgba(245, 247, 250, 0.9) 0%, rgba(195, 207, 226, 0.9) 100%),
+                url('hintergrund.webp') center/cover no-repeat fixed;
             padding: 20px;
             min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(2px);
+            z-index: -1;
         }
         
         .container {
@@ -52,45 +67,60 @@
             position: relative;
         }
         
-        /* VRS Corner Button im GitHub-Corner Style - ROT */
+        /* VRS Corner Button mit Font Awesome */
         .vrs-corner {
             position: fixed;
             top: 0;
             right: 0;
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             overflow: hidden;
             z-index: 9999;
             pointer-events: none;
         }
         
-        .vrs-corner svg {
-            fill: var(--vrs-red);
-            color: white;
+        .vrs-corner-bg {
             position: absolute;
-            top: 0;
-            right: 0;
-            border: 0;
-            transform: scale(1);
-            transition: transform 0.3s ease;
-            width: 120px;
-            height: 120px;
+            top: -75px;
+            right: -75px;
+            width: 300px;
+            height: 300px;
+            background: var(--vrs-red);
+            transform: rotate(45deg);
+            transform-origin: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
         }
         
-        .vrs-corner .vrs-bus {
-            fill: white;
-            transform-origin: 85px 75px;
-            transition: transform 0.3s ease;
+        .vrs-corner:hover .vrs-corner-bg {
+            transform: rotate(45deg) scale(1.1);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
         }
         
-        .vrs-corner:hover .vrs-bus {
+        .vrs-corner-icon {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            color: white;
+            font-size: 3rem;
+            z-index: 2;
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .vrs-corner:hover .vrs-corner-icon {
             transform: scale(1.2) rotate(10deg);
         }
         
-        .vrs-corner .vrs-text {
-            fill: white;
-            font-size: 18px;
+        .vrs-corner-text {
+            position: absolute;
+            top: 85px;
+            right: 45px;
+            color: white;
+            font-size: 1.2rem;
             font-weight: bold;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             font-family: Arial, sans-serif;
         }
         
@@ -104,6 +134,7 @@
             background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
             transform: translateX(-100%) translateY(-100%) rotate(45deg);
             transition: transform 0.6s ease;
+            z-index: 1;
         }
         
         .vrs-corner:hover::before {
@@ -114,13 +145,14 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 40px 30px;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,247,255,0.95) 100%);
             animation: fadeInUp 1s ease-out;
+            backdrop-filter: blur(10px);
         }
         
         header::before {
@@ -200,7 +232,7 @@
         }
         
         .overview-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -211,6 +243,7 @@
             overflow: hidden;
             animation: fadeInUp 0.8s ease-out;
             animation-fill-mode: both;
+            backdrop-filter: blur(10px);
         }
         
         .overview-card:nth-child(1) { animation-delay: 0.1s; }
@@ -311,7 +344,7 @@
         }
         
         .card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -320,6 +353,7 @@
             overflow: hidden;
             animation: fadeInUp 0.8s ease-out;
             animation-fill-mode: both;
+            backdrop-filter: blur(10px);
         }
         
         .card:nth-child(1) { animation-delay: 0.2s; }
@@ -456,7 +490,7 @@
         }
         
         .chart-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -464,6 +498,7 @@
             overflow: hidden;
             animation: fadeInUp 0.8s ease-out;
             animation-fill-mode: both;
+            backdrop-filter: blur(10px);
         }
         
         .chart-card:nth-child(1) { animation-delay: 0.3s; }
@@ -598,7 +633,7 @@
         }
         
         .recommendations {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -606,6 +641,7 @@
             position: relative;
             overflow: hidden;
             animation: fadeInUp 0.8s ease-out;
+            backdrop-filter: blur(10px);
         }
         
         .recommendations::before {
@@ -732,13 +768,14 @@
         }
         
         .insight-box {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
             border-left: 5px solid var(--primary);
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             animation: pulse 2s infinite;
+            backdrop-filter: blur(10px);
         }
         
         .insight-box h3 {
@@ -803,13 +840,14 @@
             padding: 30px 25px;
             color: var(--dark);
             font-size: 0.9rem;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             margin-top: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%);
             border-top: 5px solid var(--secondary);
             animation: fadeInUp 1s ease-out;
+            backdrop-filter: blur(10px);
         }
         
         .creator {
@@ -850,7 +888,7 @@
         }
         
         .comment-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -858,6 +896,7 @@
             transition: all 0.4s ease;
             animation: fadeInUp 0.6s ease-out;
             animation-fill-mode: both;
+            backdrop-filter: blur(10px);
         }
         
         .comment-card:nth-child(1) { animation-delay: 0.2s; }
@@ -996,28 +1035,37 @@
             }
             
             .vrs-corner {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
             }
             
-            .vrs-corner svg {
-                width: 80px;
-                height: 80px;
+            .vrs-corner-bg {
+                width: 200px;
+                height: 200px;
+                top: -50px;
+                right: -50px;
+            }
+            
+            .vrs-corner-icon {
+                top: 25px;
+                right: 25px;
+                font-size: 2rem;
+            }
+            
+            .vrs-corner-text {
+                top: 60px;
+                right: 30px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- VRS Corner Button - ROT und ohne Link -->
+    <!-- VRS Corner Button mit Font Awesome -->
     <div class="vrs-corner">
-        <svg width="120" height="120" viewbox="0 0 250 250" aria-hidden="true">
-            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
-            <!-- Bus Symbol -->
-            <path d="M180,120 L160,120 L160,140 L180,140 L180,160 L140,160 L140,120 L120,120 L120,100 L180,100 Z" 
-                  fill="white" class="vrs-bus" />
-            <!-- VRS Text -->
-            <text x="135" y="190" class="vrs-text">VRS</text>
-        </svg>
+        <div class="vrs-corner-bg"></div>
+        <i class="fas fa-bus vrs-corner-icon"></i>
+        <div class="vrs-corner-text">VRS</div>
     </div>
 
     <div class="container">
