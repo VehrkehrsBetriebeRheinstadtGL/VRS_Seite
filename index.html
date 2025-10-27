@@ -52,51 +52,64 @@
             position: relative;
         }
         
-        /* Discord Floating Button */
-        .discord-float {
+        /* VRS Corner Button im GitHub-Corner Style */
+        .vrs-corner {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--discord);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            animation: pulse-discord 2s infinite;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            z-index: 9999;
             text-decoration: none;
         }
         
-        .discord-float:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 25px rgba(88, 101, 242, 0.6);
-        }
-        
-        .discord-tooltip {
-            position: absolute;
-            top: 70px;
-            right: 0;
-            background: var(--dark);
+        .vrs-corner svg {
+            fill: var(--primary);
             color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 0;
+            transform: scale(1);
+            transition: transform 0.3s ease;
         }
         
-        .discord-float:hover .discord-tooltip {
-            opacity: 1;
-            transform: translateY(0);
+        .vrs-corner:hover svg {
+            transform: scale(1.1);
+        }
+        
+        .vrs-corner .vrs-bus {
+            fill: white;
+            transform-origin: 130px 106px;
+            transition: transform 0.3s ease;
+        }
+        
+        .vrs-corner:hover .vrs-bus {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .vrs-corner .vrs-text {
+            fill: white;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+        
+        .vrs-corner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+        
+        .vrs-corner:hover::before {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
         }
         
         header {
@@ -920,12 +933,6 @@
             100% { transform: scale(1); }
         }
         
-        @keyframes pulse-discord {
-            0% { box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4); }
-            50% { box-shadow: 0 4px 25px rgba(88, 101, 242, 0.7); }
-            100% { box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4); }
-        }
-        
         @keyframes popIn {
             0% {
                 opacity: 0;
@@ -979,21 +986,29 @@
                 font-size: 1.1rem;
             }
             
-            .discord-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                top: 10px;
-                right: 10px;
+            .vrs-corner {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .vrs-corner svg {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Discord Floating Button -->
-    <a href="https://discord.gg/dein-discord-link" class="discord-float" target="_blank" rel="noopener">
-        <i class="fab fa-discord"></i>
-        <div class="discord-tooltip">Join unserem Discord!</div>
+    <!-- VRS Corner Button im GitHub-Corner Style -->
+    <a href="https://discord.gg/dein-vrs-discord-link" class="vrs-corner" title="Join unserem VRS Discord!" aria-label="Join unserem VRS Discord!" rel="noopener noreferrer nofollow" target="_blank">
+        <svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true">
+            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
+            <!-- Bus Symbol -->
+            <path d="M180,120 L160,120 L160,140 L180,140 L180,160 L140,160 L140,120 L120,120 L120,100 L180,100 Z" 
+                  fill="white" class="vrs-bus" />
+            <!-- VRS Text -->
+            <text x="135" y="190" class="vrs-text">VRS</text>
+        </svg>
     </a>
 
     <div class="container">
@@ -1359,25 +1374,6 @@
                 setTimeout(() => {
                     fill.style.width = width;
                 }, 1000);
-            });
-            
-            // Scroll-Animationen
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    }
-                });
-            }, observerOptions);
-            
-            // Beobachte alle animierten Elemente
-            document.querySelectorAll('[class*="animation"]').forEach(el => {
-                observer.observe(el);
             });
         });
     </script>
