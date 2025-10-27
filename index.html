@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VRS Umfrage 2025 | Das denken WIR - Echte Stimmen</title>
+    
+    <!-- Open Graph Meta Tags für Social Media Preview -->
+    <meta property="og:title" content="VRS Mitarbeiterumfrage 2025">
+    <meta property="og:description" content="Ehrliche Meinungen unserer Kollegen - Gemeinsam für ein besseres Miteinander">
+    <meta property="og:image" content="https://i.imgur.com/9Z8Wc2j.png">
+    <meta property="og:url" content="https://dein-github-username.github.io/vrs-umfrage-2025">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VRS Mitarbeiterumfrage 2025">
+    <meta name="twitter:description" content="Ehrliche Meinungen unserer Kollegen - Gemeinsam für ein besseres Miteinander">
+    <meta name="twitter:image" content="https://i.imgur.com/9Z8Wc2j.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -14,6 +28,7 @@
             --danger: #f44336;
             --light: #f5f9ff;
             --dark: #003865;
+            --discord: #5865F2;
         }
         
         * {
@@ -34,6 +49,54 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+        }
+        
+        /* Discord Floating Button */
+        .discord-float {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--discord);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse-discord 2s infinite;
+            text-decoration: none;
+        }
+        
+        .discord-float:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 25px rgba(88, 101, 242, 0.6);
+        }
+        
+        .discord-tooltip {
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background: var(--dark);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .discord-float:hover .discord-tooltip {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         header {
@@ -215,21 +278,6 @@
             border-radius: 7px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             transition: width 1.5s ease-in-out;
-        }
-        
-        .progress-high {
-            background: linear-gradient(90deg, var(--success), #2ecc71);
-            width: 76%;
-        }
-        
-        .progress-medium {
-            background: linear-gradient(90deg, var(--warning), #f1c40f);
-            width: 76%;
-        }
-        
-        .progress-low {
-            background: linear-gradient(90deg, var(--danger), #e67e22);
-            width: 48%;
         }
         
         .dashboard {
@@ -872,6 +920,12 @@
             100% { transform: scale(1); }
         }
         
+        @keyframes pulse-discord {
+            0% { box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(88, 101, 242, 0.7); }
+            100% { box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4); }
+        }
+        
         @keyframes popIn {
             0% {
                 opacity: 0;
@@ -924,10 +978,24 @@
             .subtitle {
                 font-size: 1.1rem;
             }
+            
+            .discord-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                top: 10px;
+                right: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Discord Floating Button -->
+    <a href="https://discord.gg/dein-discord-link" class="discord-float" target="_blank" rel="noopener">
+        <i class="fab fa-discord"></i>
+        <div class="discord-tooltip">Join unserem Discord!</div>
+    </a>
+
     <div class="container">
         <header>
             <div class="logo">
@@ -1194,27 +1262,6 @@
                 <h3><i class="fas fa-heart"></i> WEITER SO!</h3>
                 <p><strong>Teamarbeit & Zusammenhalt</strong> - Unsere größte Stärke!</p>
                 <p>Der gute Zusammenhalt ist unser Fundament für alle Verbesserungen.</p>
-            </div>
-        </div>
-
-        <!-- LUSTIGE KOMMENTARE -->
-        <div class="employee-comments">
-            <div class="comment-card">
-                <h4><i class="fas fa-graduation-cap"></i> Über Ausbildung</h4>
-                <p>"Die Ausbildungen sind Lehrreich"</p>
-                <p>"Die Weiterbildungsvoraussetzungen sind zu hochgeschraubt"</p>
-            </div>
-            
-            <div class="comment-card">
-                <h4><i class="fas fa-crown"></i> Über die Leitung</h4>
-                <p>"Das 002 | Matthew Casey sich wirklich mühe gibt das alles läuft"</p>
-                <p>"Das die Inaktiven Leitungsmitglieder rausgeworfen werden"</p>
-            </div>
-            
-            <div class="comment-card">
-                <h4><i class="fas fa-star"></i> Positive Überraschungen</h4>
-                <p>"Coole socken"</p>
-                <p>"N schöneren Gelenkbus!!! Und maybe neue und cleanere Ansagen im Bus - die Robo Stimme bringt Kopfaua"</p>
             </div>
         </div>
 
