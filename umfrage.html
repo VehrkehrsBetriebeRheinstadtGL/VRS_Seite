@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umfragen Übersicht | VRS Mitarbeiterbefragungen</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Umfragen Übersicht - VRS Mitarbeiterbefragungen">
+    <meta property="og:description" content="Alle aktuellen und vergangenen Mitarbeiterumfragen">
+    <meta property="og:image" content="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/hintergrund.webp">
+    <meta property="og:url" content="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/umfragen.html">
+    <meta property="og:site_name" content="VRS Mitarbeiterumfragen">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:image:width" content="1175">
+    <meta property="og:image:height" content="654">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Umfragen Übersicht - VRS Mitarbeiterbefragungen">
+    <meta name="twitter:description" content="Alle aktuellen und vergangenen Mitarbeiterumfragen">
+    <meta name="twitter:image" content="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/hintergrund.webp">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-header">
+                <div class="nav-logo">
+                    <i class="fas fa-bus"></i>
+                    <span>VRS Umfragen</span>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link" onclick="location.reload(); return false;">
+                        <i class="fas fa-home"></i>
+                        <span>Startseite</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-dropdown">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Umfragen</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="year-dropdown">
+                            <a href="#">
+                                <i class="fas fa-calendar"></i>
+                                <span>2025</span>
+                            </a>
+                            <ul class="year-menu">
+                                <li><a href="umfrage-oktober-2025.html">Oktober 2025</a></li>
+                                <li><a href="#">Juli 2025</a></li>
+                                <li><a href="#">März 2025</a></li>
+                            </ul>
+                        </li>
+                        <li class="year-dropdown">
+                            <a href="#">
+                                <i class="fas fa-calendar"></i>
+                                <span>2024</span>
+                            </a>
+                            <ul class="year-menu">
+                                <li><a href="#">Dezember 2024</a></li>
+                                <li><a href="#">August 2024</a></li>
+                                <li><a href="#">April 2024</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Über Umfragen</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <header>
+                <div class="logo">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h1>Umfragen Übersicht</h1>
+                <p class="subtitle">Alle aktuellen und vergangenen Mitarbeiterbefragungen</p>
+            </header>
+
+            <!-- Aktuelle Umfragen -->
+            <section class="surveys-section">
+                <h2 class="section-title">Aktuelle Umfragen</h2>
+                
+                <div class="surveys-grid">
+                    <div class="survey-card current">
+                        <div class="survey-header">
+                            <div class="survey-badge">
+                                <i class="fas fa-star"></i>
+                                <span>Aktiv</span>
+                            </div>
+                            <div class="survey-date">Oktober 2025</div>
+                        </div>
+                        <h3>Herbstumfrage 2025</h3>
+                        <p class="survey-description">
+                            Unsere aktuelle Mitarbeiterbefragung - deine Meinung zählt!
+                        </p>
+                        <div class="survey-stats">
+                            <div class="stat">
+                                <div class="stat-value">11</div>
+                                <div class="stat-label">Teilnehmer</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">3,8/5</div>
+                                <div class="stat-label">Durchschnitt</div>
+                            </div>
+                        </div>
+                        <div class="survey-actions">
+                            <a href="umfrage-oktober-2025.html" class="survey-button primary">
+                                <i class="fas fa-chart-bar"></i>
+                                Ergebnisse ansehen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Geplante Umfragen -->
+            <section class="surveys-section">
+                <h2 class="section-title">Geplante Umfragen</h2>
+                
+                <div class="surveys-grid">
+                    <div class="survey-card planned">
+                        <div class="survey-header">
+                            <div class="survey-badge">
+                                <i class="fas fa-clock"></i>
+                                <span>Geplant</span>
+                            </div>
+                            <div class="survey-date">März 2025</div>
+                        </div>
+                        <h3>Frühjahrsbefragung 2025</h3>
+                        <p class="survey-description">
+                            Nächste reguläre Mitarbeiterumfrage
+                        </p>
+                        <div class="survey-info">
+                            <div class="info-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Start: 01.03.2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="survey-card planned">
+                        <div class="survey-header">
+                            <div class="survey-badge">
+                                <i class="fas fa-clock"></i>
+                                <span>Geplant</span>
+                            </div>
+                            <div class="survey-date">Juli 2025</div>
+                        </div>
+                        <h3>Sommerumfrage 2025</h3>
+                        <p class="survey-description">
+                            Halbjahres-Umfrage zur Zwischenbilanz
+                        </p>
+                        <div class="survey-info">
+                            <div class="info-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Start: 01.07.2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vergangene Umfragen -->
+            <section class="surveys-section">
+                <h2 class="section-title">Vergangene Umfragen</h2>
+                
+                <div class="surveys-grid">
+                    <div class="survey-card completed">
+                        <div class="survey-header">
+                            <div class="survey-badge">
+                                <i class="fas fa-check"></i>
+                                <span>Abgeschlossen</span>
+                            </div>
+                            <div class="survey-date">Dezember 2024</div>
+                        </div>
+                        <h3>Jahresabschlussbefragung 2024</h3>
+                        <p class="survey-description">
+                            Rückblick auf das Jahr 2024
+                        </p>
+                        <div class="survey-stats">
+                            <div class="stat">
+                                <div class="stat-value">10</div>
+                                <div class="stat-label">Teilnehmer</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">3,4/5</div>
+                                <div class="stat-label">Durchschnitt</div>
+                            </div>
+                        </div>
+                        <div class="survey-actions">
+                            <a href="#" class="survey-button">
+                                <i class="fas fa-eye"></i>
+                                Ergebnisse ansehen
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="survey-card completed">
+                        <div class="survey-header">
+                            <div class="survey-badge">
+                                <i class="fas fa-check"></i>
+                                <span>Abgeschlossen</span>
+                            </div>
+                            <div class="survey-date">August 2024</div>
+                        </div>
+                        <h3>Sommerbefragung 2024</h3>
+                        <p class="survey-description">
+                            Mitarbeiterzufriedenheit im Sommer 2024
+                        </p>
+                        <div class="survey-stats">
+                            <div class="stat">
+                                <div class="stat-value">7</div>
+                                <div class="stat-label">Teilnehmer</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">3,2/5</div>
+                                <div class="stat-label">Durchschnitt</div>
+                            </div>
+                        </div>
+                        <div class="survey-actions">
+                            <a href="#" class="survey-button">
+                                <i class="fas fa-eye"></i>
+                                Ergebnisse ansehen
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="survey-card completed">
+                        <div class="survey-header">
+                            <div class="survey-badge">
+                                <i class="fas fa-check"></i>
+                                <span>Abgeschlossen</span>
+                            </div>
+                            <div class="survey-date">April 2024</div>
+                        </div>
+                        <h3>Frühjahrsbefragung 2024</h3>
+                        <p class="survey-description">
+                            Erste Mitarbeiterumfrage des Jahres 2024
+                        </p>
+                        <div class="survey-stats">
+                            <div class="stat">
+                                <div class="stat-value">6</div>
+                                <div class="stat-label">Teilnehmer</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">3,1/5</div>
+                                <div class="stat-label">Durchschnitt</div>
+                            </div>
+                        </div>
+                        <div class="survey-actions">
+                            <a href="#" class="survey-button">
+                                <i class="fas fa-eye"></i>
+                                Ergebnisse ansehen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Umfragen-Statistik -->
+            <section class="stats-section">
+                <h2 class="section-title">Umfragen-Statistik</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">2x</div>
+                            <div class="stat-label">Pro Jahr geplant</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Durchgeführte Umfragen</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <p><strong>Gemeinsam sind wir stark!</strong></p>
+                    <p>Deine Meinung zählt - sie hilft uns, die VRS kontinuierlich zu verbessern.</p>
+                    <div class="creator">
+                        Gemacht für das ganze VRS-Team <span class="heart">❤</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.8rem; color: var(--dark);">
+                        Regelmäßige Umfragen für kontinuierliche Verbesserung
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        // Navigation Toggle für Mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Dropdown handling für mobile Geräte
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Year dropdown handling für mobile Geräte
+            const yearDropdowns = document.querySelectorAll('.year-dropdown');
+            yearDropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
