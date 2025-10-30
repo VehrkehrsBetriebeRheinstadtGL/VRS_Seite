@@ -40,7 +40,7 @@
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/index.html" class="nav-link active" onclick="location.reload(); return false;">
+                    <a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/index.html" class="nav-link active">
                         <i class="fas fa-home"></i>
                         <span>Startseite</span>
                     </a>
@@ -53,7 +53,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="year-dropdown">
-                            <a href="#" onclick="location.reload(); return false;">
+                            <a href="#">
                                 <i class="fas fa-calendar"></i>
                                 <span>2025</span>
                             </a>
@@ -310,6 +310,14 @@
                         e.stopPropagation();
                         this.classList.toggle('active');
                     }
+                });
+            });
+
+            // Verhindere Standardverhalten für aktuelle Seite Links
+            const currentPageLinks = document.querySelectorAll('a[href=""]');
+            currentPageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
                 });
             });
         });

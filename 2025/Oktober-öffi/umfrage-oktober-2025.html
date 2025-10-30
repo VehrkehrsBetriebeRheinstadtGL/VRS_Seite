@@ -54,12 +54,12 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="year-dropdown">
-                            <a href="#" onclick="location.reload(); return false;">
+                            <a href="#">
                                 <i class="fas fa-calendar"></i>
                                 <span>2025</span>
                             </a>
                             <ul class="year-menu">
-                                <li><a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/2025/Oktober-öffi/umfrage-oktober-2025.html" class="active" onclick="location.reload(); return false;">Oktober 2025</a></li>
+                                <li><a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/2025/Oktober-öffi/umfrage-oktober-2025.html" class="active">Oktober 2025</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -184,7 +184,7 @@
                 </div>
                 
                 <div class="card">
-                    <h2><i class="fas fa-thumbs-down"></i> Das nervt us</h2>
+                    <h2><i class="fas fa-thumbs-down"></i> Das nervt uns</h2>
                     <div class="negative-item">
                         <span class="item-icon">-</span>
                         <span>Wir reden zu wenig miteinander</span>
@@ -478,6 +478,14 @@
                         e.stopPropagation();
                         this.classList.toggle('active');
                     }
+                });
+            });
+
+            // Verhindere Standardverhalten für leere Links
+            const emptyLinks = document.querySelectorAll('a[href="#"]');
+            emptyLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
                 });
             });
         });
