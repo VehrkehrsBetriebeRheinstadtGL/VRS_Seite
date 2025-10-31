@@ -1776,13 +1776,31 @@ footer {
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-    /* Navigation */
+    /* === VERBESSERTE NAVIGATION === */
     .nav-header {
         flex-wrap: nowrap;
+        padding: 10px 0;
     }
     
     .nav-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: var(--light);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-toggle:hover {
+        background: var(--secondary);
+        color: white;
+    }
+    
+    .nav-toggle.active {
+        background: var(--secondary);
+        color: white;
     }
     
     .nav-menu {
@@ -1792,194 +1810,462 @@ footer {
         border-top: none;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
     
     .nav-menu.active {
         display: flex;
-        max-height: 1000px;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 10px 0;
     }
     
     .nav-item {
         text-align: left;
-        border-bottom: 1px solid var(--light);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        margin: 0 10px;
+        border-radius: 8px;
+    }
+    
+    .nav-item:last-child {
+        border-bottom: none;
     }
     
     .nav-link {
         justify-content: flex-start;
-        padding: 15px 20px;
+        padding: 18px 20px;
         border-bottom: none;
-        border-left: 3px solid transparent;
+        border-left: 4px solid transparent;
+        border-radius: 8px;
+        margin: 2px 0;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        min-height: 60px;
+        align-items: center;
     }
     
+    .nav-link:hover,
     .nav-link.active {
+        background: rgba(0, 158, 224, 0.1);
+        color: var(--primary);
         border-left-color: var(--secondary);
-        border-bottom: none;
+        transform: translateX(5px);
     }
     
-    /* Dropdown Menu für Mobile */
+    .nav-link i {
+        width: 24px;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    /* === VERBESSERTE DROPDOWNS FÜR MOBILE === */
     .nav-dropdown .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        border-radius: 0;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
+        position: static !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
         display: none;
-        background: rgba(0, 0, 0, 0.03);
-        border-left: 3px solid var(--secondary);
-        margin-left: 20px;
+        background: rgba(0, 91, 170, 0.05);
+        border-left: 4px solid var(--primary);
+        margin: 5px 0 5px 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0 8px 8px 0;
     }
-    
+
     .nav-dropdown.active .dropdown-menu {
-        display: block;
-        animation: slideDown 0.3s ease;
+        display: block !important;
+        max-height: 400px;
+        animation: slideDown 0.4s ease-out;
     }
     
-    /* Year Dropdown für Mobile */
+    /* === VERBESSERTE YEAR DROPDOWNS === */
     .year-dropdown .year-menu {
-        position: static;
-        box-shadow: none;
+        position: static !important;
+        box-shadow: none !important;
         display: none;
-        background: rgba(0, 0, 0, 0.05);
-        margin-left: 20px;
-        border-left: 2px solid var(--primary);
+        background: rgba(0, 158, 224, 0.08);
+        margin: 5px 0 5px 20px;
+        border-left: 3px solid var(--secondary);
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0 8px 8px 0;
     }
-    
+
     .year-dropdown.active .year-menu {
-        display: block;
-        animation: slideDown 0.3s ease;
+        display: block !important;
+        max-height: 300px;
+        animation: slideDown 0.4s ease-out;
     }
     
-    /* Dropdown Arrows für Mobile */
+    /* === INTELLIGENTE DROPDOWN PFEILE === */
+    .nav-dropdown > .nav-link {
+        position: relative;
+        padding-right: 50px;
+    }
+    
     .nav-dropdown > .nav-link::after {
         content: '›';
-        margin-left: auto;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3rem;
         font-weight: bold;
-        transition: transform 0.3s ease;
+        transition: all 0.3s ease;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
     }
     
     .nav-dropdown.active > .nav-link::after {
-        transform: rotate(90deg);
+        transform: translateY(-50%) rotate(90deg);
+        background: var(--secondary);
+        color: white;
+    }
+    
+    .year-dropdown > a {
+        position: relative;
+        padding-right: 50px;
     }
     
     .year-dropdown > a::after {
         content: '›';
-        margin-left: auto;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3rem;
         font-weight: bold;
-        transition: transform 0.3s ease;
+        transition: all 0.3s ease;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
     }
     
     .year-dropdown.active > a::after {
-        transform: rotate(90deg);
+        transform: translateY(-50%) rotate(90deg);
+        background: var(--primary);
+        color: white;
     }
     
-    /* Mobile Navigation Verbesserungen */
+    /* === VERBESSERTE DROPDOWN LINKS === */
     .nav-dropdown .dropdown-menu a,
     .year-menu a {
-        padding: 12px 20px;
+        padding: 16px 20px;
         border-left: 3px solid transparent;
         transition: all 0.3s ease;
         pointer-events: all;
         cursor: pointer;
+        margin: 2px 5px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 50px;
     }
     
     .nav-dropdown .dropdown-menu a:hover,
     .nav-dropdown .dropdown-menu a.active,
     .year-menu a:hover,
     .year-menu a.active {
-        background: rgba(0, 158, 224, 0.1);
+        background: rgba(0, 158, 224, 0.15);
         border-left-color: var(--secondary);
+        transform: translateX(5px);
+        font-weight: 600;
+    }
+    
+    .nav-dropdown .dropdown-menu a i,
+    .year-menu a i {
+        width: 20px;
+        text-align: center;
+        font-size: 1rem;
+        opacity: 0.8;
     }
 
-    /* General Responsive */
+    /* === TOUCH-FREUNDLICHE INTERAKTIONEN === */
+    .nav-link:active,
+    .dropdown-menu a:active,
+    .year-menu a:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Scrollbar für lange Menüs */
+    .nav-menu.active::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .nav-menu.active::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 2px;
+    }
+    
+    .nav-menu.active::-webkit-scrollbar-thumb {
+        background: var(--secondary);
+        border-radius: 2px;
+    }
+
+    /* === VERBESSERTES GENERAL RESPONSIVE === */
+    .container {
+        padding: 0 15px;
+    }
+    
     .overview {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .overview-card {
+        padding: 20px;
+        margin: 0 5px;
     }
     
     .dashboard {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card {
+        padding: 20px;
+        margin: 0 5px;
     }
     
     .charts-container {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .chart-card {
+        padding: 20px;
+    }
+    
+    .simple-chart-item {
+        padding: 12px 15px;
+    }
+    
+    .simple-chart-label {
+        min-width: 120px;
+        font-size: 0.9rem;
     }
     
     .recommendation-list {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .recommendation-item {
+        padding: 18px;
     }
     
     .comparison-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .comparison-card {
+        padding: 18px;
     }
     
     .employee-comments {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
     
+    .comment-card {
+        padding: 18px;
+    }
+    
+    /* === VERBESSERTE TYPOGRAPHIE === */
     h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 15px;
     }
     
     .subtitle {
         font-size: 1.1rem;
+        line-height: 1.4;
     }
     
-    /* Startseite Responsive */
+    .section-title {
+        font-size: 1.6rem;
+        margin: 30px 0 15px;
+    }
+    
+    /* === STARTSEITE RESPONSIVE VERBESSERUNGEN === */
+    header {
+        padding: 30px 20px;
+        margin: 10px 0 20px 0;
+    }
+    
+    .logo {
+        font-size: 3rem;
+    }
+    
+    .intro-text {
+        padding: 18px;
+        font-size: 1rem;
+        margin: 0 auto 20px;
+    }
+    
+    .survey-info {
+        gap: 10px;
+    }
+    
+    .info-item {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
     .survey-content {
-        padding: 25px;
+        padding: 25px 20px;
+    }
+    
+    .survey-content h3 {
+        font-size: 1.5rem;
     }
     
     .survey-stats {
         grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 18px;
+    }
+    
+    .stat-value {
+        font-size: 1.8rem;
     }
     
     .insights-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .insight-card {
+        padding: 25px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .insight-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
     }
     
     .steps-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .step-card {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
     }
     
     .importance-card {
         flex-direction: column;
         text-align: center;
-        padding: 30px 25px;
+        padding: 25px 20px;
+        gap: 20px;
     }
     
-    .insight-card {
-        flex-direction: column;
+    .importance-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    
+    .importance-highlight {
+        justify-content: center;
         text-align: center;
     }
-    
-    .step-card {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    /* About Seite Responsive */
+
+    /* === ABOUT SEITE RESPONSIVE VERBESSERUNGEN === */
     .about-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .about-card {
+        padding: 30px 20px;
+    }
+    
+    .about-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
     }
     
     .process-step {
         flex-direction: column;
         text-align: center;
         gap: 15px;
+        padding: 25px 20px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
     }
     
     .principles-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .principle-card {
+        padding: 25px 20px;
+    }
+    
+    .principle-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 1.7rem;
     }
     
     .next-card {
         flex-direction: column;
         text-align: center;
-        padding: 30px 25px;
+        padding: 25px 20px;
+        gap: 20px;
     }
     
     .next-actions {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .next-actions .cta-button {
+        width: 100%;
+        max-width: 280px;
         justify-content: center;
     }
     
@@ -1988,12 +2274,17 @@ footer {
     }
     
     .faq-answer {
-        padding: 0 20px 20px 20px;
+        padding: 0 20px 20px 55px;
     }
-    
-    /* Umfragen Übersicht Responsive */
+
+    /* === UMFRAGEN ÜBERSICHT RESPONSIVE VERBESSERUNGEN === */
     .surveys-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .survey-card {
+        padding: 25px 20px;
     }
     
     .survey-header {
@@ -2005,43 +2296,171 @@ footer {
     .survey-stats {
         flex-direction: column;
         gap: 15px;
+        padding: 18px;
+    }
+    
+    .survey-stats .stat-value {
+        font-size: 1.6rem;
+    }
+    
+    .survey-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .survey-button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
     }
     
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 100%;
     }
     
     .stat-card {
         flex-direction: column;
         text-align: center;
         gap: 15px;
+        padding: 25px 20px;
+    }
+    
+    .stat-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    /* === FOOTER RESPONSIVE === */
+    footer {
+        padding: 25px 20px;
+        margin: 20px 0 10px 0;
+    }
+    
+    .footer-logo {
+        font-size: 2.2rem;
+    }
+    
+    .creator {
+        flex-direction: column;
+        gap: 5px;
     }
 }
 
+/* === KLEINERE MOBILE GERÄTE === */
 @media (max-width: 480px) {
-    .survey-card {
-        padding: 20px;
+    body {
+        padding: 15px 10px;
     }
     
-    .survey-actions {
-        flex-direction: column;
+    .container {
+        padding: 0 10px;
+    }
+    
+    .nav-link {
+        padding: 16px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .nav-dropdown .dropdown-menu a,
+    .year-menu a {
+        padding: 14px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .survey-card {
+        padding: 20px 15px;
     }
     
     .cta-button {
         width: 100%;
-        max-width: 300px;
+        max-width: 100%;
         justify-content: center;
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+    
+    .survey-button {
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Noch kleinere Schrift für sehr kleine Geräte */
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
     }
 }
 
-/* Neue Animation für Dropdown */
+/* === EXTRA KLEINE GERÄTE (iPhone SE etc.) === */
+@media (max-width: 360px) {
+    .nav-link {
+        padding: 14px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .nav-link i {
+        font-size: 1rem;
+    }
+    
+    .survey-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .stat-value {
+        font-size: 1.6rem;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* === VERBESSERTE DROPDOWN ANIMATION === */
 @keyframes slideDown {
-    from {
+    0% {
         opacity: 0;
         max-height: 0;
+        transform: translateY(-10px);
     }
-    to {
+    50% {
+        opacity: 0.5;
+    }
+    100% {
         opacity: 1;
         max-height: 500px;
+        transform: translateY(0);
+    }
+}
+
+/* === SMOOTH SCROLLING FÜR MOBILE === */
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .nav-menu.active {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* === TOUCH OPTIMIERUNG FÜR IOS === */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 768px) {
+        .nav-menu.active {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
     }
 }

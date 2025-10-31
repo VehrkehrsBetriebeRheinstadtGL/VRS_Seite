@@ -334,12 +334,13 @@
             const navToggle = document.getElementById('navToggle');
             const navMenu = document.getElementById('navMenu');
 
+            // Haupt-Navigation Toggle
             if (navToggle && navMenu) {
-                navToggle.addEventListener('click', function () {
+                navToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
                     navMenu.classList.toggle('active');
-                    if (!navMenu.classList.contains('active')) {
-                        closeAllDropdowns();
-                    }
+                    navToggle.innerHTML = navMenu.classList.contains('active') ?
+                        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
                 });
             }
 
@@ -347,11 +348,10 @@
             const dropdowns = document.querySelectorAll('.nav-dropdown');
             dropdowns.forEach(dropdown => {
                 const dropdownLink = dropdown.querySelector('.nav-link');
+                const dropdownArrow = dropdown.querySelector('.dropdown-arrow');
 
                 dropdownLink.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
-                        // NEU: Prüfe ob dieses Element ein Dropdown-Eltern-Element ist
-                        // (hat dropdown-menu als direktes Geschwister-Element)
                         const hasDropdown = this.parentElement.classList.contains('nav-dropdown') &&
                             this.nextElementSibling &&
                             this.nextElementSibling.classList.contains('dropdown-menu');
@@ -364,13 +364,20 @@
                             dropdowns.forEach(otherDropdown => {
                                 if (otherDropdown !== dropdown) {
                                     otherDropdown.classList.remove('active');
+                                    const otherArrow = otherDropdown.querySelector('.dropdown-arrow');
+                                    if (otherArrow) {
+                                        otherArrow.style.transform = 'rotate(0deg)';
+                                    }
                                 }
                             });
 
                             // Toggle aktuelles Dropdown
                             dropdown.classList.toggle('active');
+                            if (dropdownArrow) {
+                                dropdownArrow.style.transform = dropdown.classList.contains('active') ?
+                                    'rotate(180deg)' : 'rotate(0deg)';
+                            }
                         }
-                        // Wenn es kein Dropdown ist, lasse den Link normal funktionieren
                     }
                 });
             });
@@ -382,8 +389,6 @@
 
                 yearLink.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
-                        // NEU: Prüfe ob dieses Element ein Year-Dropdown-Eltern-Element ist
-                        // (hat year-menu als direktes Geschwister-Element)
                         const hasYearMenu = this.parentElement.classList.contains('year-dropdown') &&
                             this.nextElementSibling &&
                             this.nextElementSibling.classList.contains('year-menu');
@@ -402,17 +407,21 @@
                             // Toggle aktuelles Year-Dropdown
                             dropdown.classList.toggle('active');
                         }
-                        // Wenn es kein Year-Dropdown ist, lasse den Link normal funktionieren
                     }
                 });
             });
 
-            // Klick außerhalb schließt Dropdowns
+            // Klick außerhalb schließt alles
             document.addEventListener('click', function (e) {
                 if (window.innerWidth <= 768) {
-                    if (!e.target.closest('.nav-menu')) {
+                    if (!e.target.closest('.nav-menu') && !e.target.closest('.nav-toggle')) {
                         closeAllDropdowns();
-                        if (navMenu) navMenu.classList.remove('active');
+                        if (navMenu) {
+                            navMenu.classList.remove('active');
+                            if (navToggle) {
+                                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                            }
+                        }
                     }
                 }
             });
@@ -421,11 +430,30 @@
             function closeAllDropdowns() {
                 dropdowns.forEach(dropdown => {
                     dropdown.classList.remove('active');
+                    const arrow = dropdown.querySelector('.dropdown-arrow');
+                    if (arrow) {
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
                 });
                 yearDropdowns.forEach(dropdown => {
                     dropdown.classList.remove('active');
                 });
             }
+
+            // Touch-Event für bessere Mobile-Experience
+            document.addEventListener('touchstart', function (e) {
+                if (window.innerWidth <= 768) {
+                    if (!e.target.closest('.nav-menu') && !e.target.closest('.nav-toggle')) {
+                        closeAllDropdowns();
+                        if (navMenu) {
+                            navMenu.classList.remove('active');
+                            if (navToggle) {
+                                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                            }
+                        }
+                    }
+                }
+            });
 
             // Balken-Animationen (nur für Umfragenseite)
             const progressBars = document.querySelectorAll('.progress');
@@ -492,6 +520,17 @@
                 if (navMenu) {
                     navMenu.classList.remove('active');
                 }
+
+                const navToggle = document.getElementById('navToggle');
+                if (navToggle) {
+                    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+
+                // Setze Dropdown-Pfeile zurück
+                const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+                dropdownArrows.forEach(arrow => {
+                    arrow.style.transform = 'rotate(0deg)';
+                });
             }
         });
     </script>
