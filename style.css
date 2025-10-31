@@ -1885,6 +1885,51 @@ footer {
         max-height: 400px;
         animation: slideDown 0.4s ease-out;
     }
+
+    /* === WICHTIG: Umfragen-Link direkt klickbar machen === */
+    .nav-dropdown > .nav-link {
+        position: relative;
+        padding-right: 50px;
+    }
+
+    /* Haupt-Link Bereich klickbar für direkte Navigation */
+    .nav-dropdown > .nav-link .nav-link-content {
+        flex: 1;
+        pointer-events: auto;
+    }
+
+    /* Nur der Pfeil öffnet das Dropdown */
+    .nav-dropdown > .nav-link::after {
+        content: '›';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+        pointer-events: auto;
+        z-index: 10;
+    }
+
+    .nav-dropdown.active > .nav-link::after {
+        transform: translateY(-50%) rotate(90deg);
+        background: var(--secondary);
+        color: white;
+    }
+
+    /* Haupt-Link Text ist immer klickbar */
+    .nav-dropdown > .nav-link span:not(.dropdown-arrow),
+    .nav-dropdown > .nav-link i:not(.dropdown-arrow) {
+        pointer-events: auto;
+    }
     
     /* === VERBESSERTE YEAR DROPDOWNS === */
     .year-dropdown .year-menu {

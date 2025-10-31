@@ -456,11 +456,17 @@
 
                 dropdownLink.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
+                        // Prüfe ob auf den PFEIL geklickt wurde
+                        const isArrowClick = e.target.classList.contains('dropdown-arrow') ||
+                            e.target === this.querySelector('.dropdown-arrow') ||
+                            e.target === this.querySelector('::after') ||
+                            e.offsetX > this.offsetWidth - 40; // Klick auf rechte Seite
+
                         const hasDropdown = this.parentElement.classList.contains('nav-dropdown') &&
                             this.nextElementSibling &&
                             this.nextElementSibling.classList.contains('dropdown-menu');
 
-                        if (hasDropdown) {
+                        if (hasDropdown && isArrowClick) {
                             e.preventDefault();
                             e.stopPropagation();
 
@@ -482,6 +488,7 @@
                                     'rotate(180deg)' : 'rotate(0deg)';
                             }
                         }
+                        // Wenn nicht auf den Pfeil geklickt wurde, lasse den Link normal funktionieren
                     }
                 });
             });
