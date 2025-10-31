@@ -1776,6 +1776,7 @@ footer {
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
+    /* Navigation */
     .nav-header {
         flex-wrap: nowrap;
     }
@@ -1789,10 +1790,14 @@ footer {
         width: 100%;
         flex-direction: column;
         border-top: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
     }
     
     .nav-menu.active {
         display: flex;
+        max-height: 1000px;
     }
     
     .nav-item {
@@ -1803,8 +1808,16 @@ footer {
     .nav-link {
         justify-content: flex-start;
         padding: 15px 20px;
+        border-bottom: none;
+        border-left: 3px solid transparent;
     }
     
+    .nav-link.active {
+        border-left-color: var(--secondary);
+        border-bottom: none;
+    }
+    
+    /* Dropdown Menu für Mobile */
     .nav-dropdown .dropdown-menu {
         position: static;
         box-shadow: none;
@@ -1813,23 +1826,72 @@ footer {
         visibility: visible;
         transform: none;
         display: none;
-        background: var(--light);
+        background: rgba(0, 0, 0, 0.03);
+        border-left: 3px solid var(--secondary);
+        margin-left: 20px;
     }
     
     .nav-dropdown.active .dropdown-menu {
         display: block;
+        animation: slideDown 0.3s ease;
     }
     
+    /* Year Dropdown für Mobile */
     .year-dropdown .year-menu {
         position: static;
         box-shadow: none;
         display: none;
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: 20px;
+        border-left: 2px solid var(--primary);
     }
     
     .year-dropdown.active .year-menu {
         display: block;
+        animation: slideDown 0.3s ease;
     }
     
+    /* Dropdown Arrows für Mobile */
+    .nav-dropdown > .nav-link::after {
+        content: '›';
+        margin-left: auto;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-dropdown.active > .nav-link::after {
+        transform: rotate(90deg);
+    }
+    
+    .year-dropdown > a::after {
+        content: '›';
+        margin-left: auto;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+    }
+    
+    .year-dropdown.active > a::after {
+        transform: rotate(90deg);
+    }
+    
+    /* Mobile Navigation Verbesserungen */
+    .nav-dropdown .dropdown-menu a,
+    .year-menu a {
+        padding: 12px 20px;
+        border-left: 3px solid transparent;
+        transition: all 0.3s ease;
+        pointer-events: all;
+        cursor: pointer;
+    }
+    
+    .nav-dropdown .dropdown-menu a:hover,
+    .nav-dropdown .dropdown-menu a.active,
+    .year-menu a:hover,
+    .year-menu a.active {
+        background: rgba(0, 158, 224, 0.1);
+        border-left-color: var(--secondary);
+    }
+
     /* General Responsive */
     .overview {
         grid-template-columns: 1fr;
@@ -1969,5 +2031,17 @@ footer {
         width: 100%;
         max-width: 300px;
         justify-content: center;
+    }
+}
+
+/* Neue Animation für Dropdown */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 500px;
     }
 }
