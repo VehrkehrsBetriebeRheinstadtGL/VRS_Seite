@@ -291,15 +291,20 @@
                 });
             }
 
-            // Dropdown handling für mobile Geräte - NUR für Dropdown-Eltern-Links
+            // INTELLIGENTE Dropdown-Erkennung für mobile Geräte
             const dropdowns = document.querySelectorAll('.nav-dropdown');
             dropdowns.forEach(dropdown => {
                 const dropdownLink = dropdown.querySelector('.nav-link');
 
                 dropdownLink.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
-                        // VERÄNDERT: Prüfe ob es ein Dropdown-Container ist (hat Untermenü)
-                        if (dropdown.querySelector('.dropdown-menu')) {
+                        // NEU: Prüfe ob dieses Element ein Dropdown-Eltern-Element ist
+                        // (hat dropdown-menu als direktes Geschwister-Element)
+                        const hasDropdown = this.parentElement.classList.contains('nav-dropdown') &&
+                            this.nextElementSibling &&
+                            this.nextElementSibling.classList.contains('dropdown-menu');
+
+                        if (hasDropdown) {
                             e.preventDefault();
                             e.stopPropagation();
 
@@ -313,20 +318,25 @@
                             // Toggle aktuelles Dropdown
                             dropdown.classList.toggle('active');
                         }
-                        // Wenn es kein Dropdown-Container ist, lasse den Link normal funktionieren
+                        // Wenn es kein Dropdown ist, lasse den Link normal funktionieren
                     }
                 });
             });
 
-            // Year dropdown handling für mobile Geräte - NUR für Year-Eltern-Links
+            // INTELLIGENTE Year-Dropdown-Erkennung für mobile Geräte
             const yearDropdowns = document.querySelectorAll('.year-dropdown');
             yearDropdowns.forEach(dropdown => {
                 const yearLink = dropdown.querySelector('a');
 
                 yearLink.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
-                        // VERÄNDERT: Prüfe ob es ein Year-Dropdown-Container ist (hat Untermenü)
-                        if (dropdown.querySelector('.year-menu')) {
+                        // NEU: Prüfe ob dieses Element ein Year-Dropdown-Eltern-Element ist
+                        // (hat year-menu als direktes Geschwister-Element)
+                        const hasYearMenu = this.parentElement.classList.contains('year-dropdown') &&
+                            this.nextElementSibling &&
+                            this.nextElementSibling.classList.contains('year-menu');
+
+                        if (hasYearMenu) {
                             e.preventDefault();
                             e.stopPropagation();
 
@@ -340,7 +350,7 @@
                             // Toggle aktuelles Year-Dropdown
                             dropdown.classList.toggle('active');
                         }
-                        // Wenn es kein Year-Dropdown-Container ist, lasse den Link normal funktionieren
+                        // Wenn es kein Year-Dropdown ist, lasse den Link normal funktionieren
                     }
                 });
             });
