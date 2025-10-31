@@ -49,7 +49,8 @@
                     </a>
                 </li>
                 <li class="nav-item nav-dropdown">
-                    <a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/umfrage.html" class="nav-link active">
+                    <a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/umfrage.html"
+                        class="nav-link active">
                         <i class="fas fa-chart-bar"></i>
                         <span>Umfragen</span>
                         <i class="fas fa-chevron-down dropdown-arrow"></i>
@@ -440,22 +441,21 @@
             if (navToggle && navMenu) {
                 navToggle.addEventListener('click', function () {
                     navMenu.classList.toggle('active');
-                    // Schließe alle geöffneten Dropdowns beim Toggle
                     if (!navMenu.classList.contains('active')) {
                         closeAllDropdowns();
                     }
                 });
             }
 
-            // Dropdown handling für mobile Geräte - NUR für Eltern-Links
+            // Dropdown handling für mobile Geräte - NUR für Dropdown-Eltern-Links
             const dropdowns = document.querySelectorAll('.nav-dropdown');
             dropdowns.forEach(dropdown => {
                 const dropdownLink = dropdown.querySelector('.nav-link');
 
                 dropdownLink.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
-                        // Nur verhindern wenn es ein Dropdown-Eltern-Link ist (ohne href)
-                        if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
+                        // VERÄNDERT: Prüfe ob es ein Dropdown-Container ist (hat Untermenü)
+                        if (dropdown.querySelector('.dropdown-menu')) {
                             e.preventDefault();
                             e.stopPropagation();
 
@@ -469,20 +469,20 @@
                             // Toggle aktuelles Dropdown
                             dropdown.classList.toggle('active');
                         }
-                        // Wenn der Link eine echte URL hat, lasse ihn normal funktionieren
+                        // Wenn es kein Dropdown-Container ist, lasse den Link normal funktionieren
                     }
                 });
             });
 
-            // Year dropdown handling für mobile Geräte - NUR für Eltern-Links
+            // Year dropdown handling für mobile Geräte - NUR für Year-Eltern-Links
             const yearDropdowns = document.querySelectorAll('.year-dropdown');
             yearDropdowns.forEach(dropdown => {
                 const yearLink = dropdown.querySelector('a');
 
                 yearLink.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
-                        // Nur verhindern wenn es ein Year-Dropdown-Eltern-Link ist (ohne href)
-                        if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
+                        // VERÄNDERT: Prüfe ob es ein Year-Dropdown-Container ist (hat Untermenü)
+                        if (dropdown.querySelector('.year-menu')) {
                             e.preventDefault();
                             e.stopPropagation();
 
@@ -496,7 +496,7 @@
                             // Toggle aktuelles Year-Dropdown
                             dropdown.classList.toggle('active');
                         }
-                        // Wenn der Link eine echte URL hat, lasse ihn normal funktionieren
+                        // Wenn es kein Year-Dropdown-Container ist, lasse den Link normal funktionieren
                     }
                 });
             });
@@ -520,14 +520,6 @@
                     dropdown.classList.remove('active');
                 });
             }
-
-            // Verhindere Standardverhalten NUR für leere Links (#)
-            const emptyLinks = document.querySelectorAll('a[href="#"]');
-            emptyLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                });
-            });
 
             // Balken-Animationen (nur für Umfragenseite)
             const progressBars = document.querySelectorAll('.progress');
