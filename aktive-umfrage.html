@@ -60,8 +60,11 @@
                                 <span>2025</span>
                             </a>
                             <ul class="year-menu">
-                                <li><a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/2025/Oktober-öffi/umfrage-oktober-2025.html">Oktober 2025</a></li>
-                                <li><a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/aktive-umfrage.html" class="active">Aktuelle Umfrage</a></li>
+                                <li><a
+                                        href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/2025/Oktober-öffi/umfrage-oktober-2025.html">Oktober
+                                        2025</a></li>
+                                <li><a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/aktive-umfrage.html"
+                                        class="active">Aktuelle Umfrage</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -87,8 +90,11 @@
                 <p class="subtitle">Deine Stimme zählt - Gemeinsam gestalten wir die Zukunft der VRS</p>
 
                 <div class="intro-text">
-                    <p><strong>Hallo liebe Kolleginnen und Kollegen!</strong> Diese Umfrage ist komplett <strong>anonym</strong> - niemand kann nachverfolgen, wer was antwortet. Sag uns ganz ehrlich, was du denkst!</p>
-                    <p style="margin-top: 10px;">Die Umfrage dauert etwa 5-7 Minuten. Deine Meinung hilft uns, die VRS kontinuierlich zu verbessern.</p>
+                    <p><strong>Hallo liebe Kolleginnen und Kollegen!</strong> Diese Umfrage ist komplett
+                        <strong>anonym</strong> - niemand kann nachverfolgen, wer was antwortet. Sag uns ganz ehrlich,
+                        was du denkst!</p>
+                    <p style="margin-top: 10px;">Die Umfrage dauert etwa 5-7 Minuten. Deine Meinung hilft uns, die VRS
+                        kontinuierlich zu verbessern.</p>
                 </div>
 
                 <div class="survey-info">
@@ -147,10 +153,11 @@
                     </div>
 
                     <div class="forms-wrapper">
-                        <!-- HIER GOOGLE FORMS EINBETTEN -->
+                        <!-- HIER GOOGLE FORMS EINBETTEN 
                         <div class="forms-placeholder">
                             <div class="placeholder-content">
-                                <i class="fas fa-google" style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
+                                <i class="fas fa-google"
+                                    style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
                                 <h3>Google Forms Umfrage</h3>
                                 <p>Hier wird demnächst die aktuelle Umfrage eingebettet</p>
                                 <div class="placeholder-actions">
@@ -161,7 +168,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        -->
                         <!-- 
                         SO SIEHT DIE EINBETTUNG AUS, WENN DU DEN CODE HAST:
                         <iframe src="https://docs.google.com/forms/d/e/DEINE_FORM_ID/viewform?embedded=true" 
@@ -173,7 +180,19 @@
                                 style="border-radius: 10px;">
                             Wird geladen…
                         </iframe>
+
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSdMQU7e-np9eXNp1u6QaMlr5eSjKKzAPnPmNohOInt8NzpXSw/viewform?embedded=true"
+                            width="640" height="2756" frameborder="0" marginheight="0" marginwidth="0">Wird
+                            geladen…
+                        </iframe>
                         -->
+
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSdMQU7e-np9eXNp1u6QaMlr5eSjKKzAPnPmNohOInt8NzpXSw/viewform?embedded=true"
+                            width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">
+                            Wird geladen…
+                        </iframe>
                     </div>
                 </div>
 
@@ -185,8 +204,11 @@
                         </div>
                         <div class="privacy-content">
                             <h3><i class="fas fa-lock"></i> Deine Daten sind sicher</h3>
-                            <p><strong>Anonymität garantiert:</strong> Diese Umfrage ist komplett anonym. Es werden keine personenbezogenen Daten erfasst und es ist technisch unmöglich, Antworten einzelnen Personen zuzuordnen.</p>
-                            <p><strong>Datenschutz:</strong> Alle Daten werden gemäß DSGVO verarbeitet und ausschließlich für die Verbesserung unserer Arbeitsbedingungen verwendet.</p>
+                            <p><strong>Anonymität garantiert:</strong> Diese Umfrage ist komplett anonym. Es werden
+                                keine personenbezogenen Daten erfasst und es ist technisch unmöglich, Antworten
+                                einzelnen Personen zuzuordnen.</p>
+                            <p><strong>Datenschutz:</strong> Alle Daten werden gemäß DSGVO verarbeitet und
+                                ausschließlich für die Verbesserung unserer Arbeitsbedingungen verwendet.</p>
                         </div>
                     </div>
                 </div>
@@ -256,21 +278,21 @@
 
             // NUR PFEIL öffnet Dropdown
             document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
-                arrow.addEventListener('click', function(e) {
+                arrow.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
                         e.preventDefault();
                         e.stopPropagation();
-                        
+
                         const dropdown = this.closest('.nav-dropdown');
                         const allDropdowns = document.querySelectorAll('.nav-dropdown');
-                        
+
                         // Schließe andere Dropdowns
                         allDropdowns.forEach(other => {
                             if (other !== dropdown) {
                                 other.classList.remove('active');
                             }
                         });
-                        
+
                         // Toggle aktuelles Dropdown
                         dropdown.classList.toggle('active');
                     }
@@ -279,7 +301,7 @@
 
             // Year-Dropdowns
             document.querySelectorAll('.year-dropdown > a').forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     if (window.innerWidth <= 768) {
                         e.preventDefault();
                         const dropdown = this.parentElement;
