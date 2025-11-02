@@ -25,6 +25,117 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/style.css">
+    <style>
+        /* Zusätzliche Styles für das Formular */
+        .custom-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .rating-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .rating-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: var(--light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .rating-option:hover {
+            background: rgba(0, 158, 224, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .rating-option input {
+            margin-right: 10px;
+        }
+
+        .rating-label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        textarea,
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            resize: vertical;
+        }
+
+        textarea:focus,
+        select:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 158, 224, 0.1);
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .word-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .word-inputs {
+                grid-template-columns: 1fr;
+            }
+
+            .custom-form {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -92,7 +203,8 @@
                 <div class="intro-text">
                     <p><strong>Hallo liebe Kolleginnen und Kollegen!</strong> Diese Umfrage ist komplett
                         <strong>anonym</strong> - niemand kann nachverfolgen, wer was antwortet. Sag uns ganz ehrlich,
-                        was du denkst!</p>
+                        was du denkst!
+                    </p>
                     <p style="margin-top: 10px;">Die Umfrage dauert etwa 5-7 Minuten. Deine Meinung hilft uns, die VRS
                         kontinuierlich zu verbessern.</p>
                 </div>
@@ -142,7 +254,7 @@
                     </div>
                 </div>
 
-                <!-- Google Forms Container -->
+                <!-- Eigenes Formular Container -->
                 <div class="forms-container">
                     <div class="forms-header">
                         <h2><i class="fas fa-edit"></i> Aktuelle Umfrage</h2>
@@ -153,24 +265,160 @@
                     </div>
 
                     <div class="forms-wrapper">
-                        <!-- Fallback-Link statt Iframe -->
-                        <div class="forms-placeholder">
-                            <div class="placeholder-content">
-                                <i class="fas fa-google"
-                                    style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
-                                <h3>Google Forms Umfrage</h3>
-                                <p>Klicke auf den Button unten um zur Umfrage zu gelangen</p>
-                                <div class="placeholder-actions">
-                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMQU7e-np9eXNp1u6QaMlr5eSjKKzAPnPmNohOInt8NzpXSw/viewform" 
-                                       target="_blank" 
-                                       class="cta-button" 
-                                       style="margin-top: 20px;">
-                                        <i class="fas fa-external-link-alt"></i>
-                                        Zur Umfrage (öffnet in neuem Tab)
-                                    </a>
+                        <form id="vrs-umfrage-form" class="custom-form">
+                            <!-- Frage 1 -->
+                            <div class="form-section">
+                                <h3>Was läuft Deiner Meinung nach aktuell besonders gut? *</h3>
+                                <textarea name="besonders_gut" placeholder="Erzähl uns, was besonders gut läuft..."
+                                    rows="3" required></textarea>
+                            </div>
+
+                            <!-- Frage 2 -->
+                            <div class="form-section">
+                                <h3>Wo siehst Du die größten Herausforderungen oder Probleme in der VRS? *</h3>
+                                <textarea name="herausforderungen" placeholder="Welche Probleme siehst du?" rows="3"
+                                    required></textarea>
+                            </div>
+
+                            <!-- Frage 3 -->
+                            <div class="form-section">
+                                <h3>Welche konkreten Verbesserungsvorschläge hast Du für uns? *</h3>
+                                <textarea name="verbesserungsvorschlaege" placeholder="Deine konkreten Vorschläge..."
+                                    rows="3" required></textarea>
+                            </div>
+
+                            <!-- Frage 4 -->
+                            <div class="form-section">
+                                <h3>Wie bewertest Du die Kommunikation und Informationsweitergabe? *</h3>
+                                <div class="rating-options">
+                                    <label class="rating-option">
+                                        <input type="radio" name="kommunikation" value="5" required>
+                                        <span class="rating-label">⭐️⭐️⭐️⭐️⭐️ Ausgezeichnet</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="kommunikation" value="4">
+                                        <span class="rating-label">⭐️⭐️⭐️⭐️ Gut</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="kommunikation" value="3">
+                                        <span class="rating-label">⭐️⭐️⭐️ Befriedigend</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="kommunikation" value="2">
+                                        <span class="rating-label">⭐️⭐️ Ausreichend</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="kommunikation" value="1">
+                                        <span class="rating-label">⭐️ Mangelhaft</span>
+                                    </label>
                                 </div>
                             </div>
-                        </div>
+
+                            <!-- Frage 5 -->
+                            <div class="form-section">
+                                <h3>Was wünschst Du dir für die Zukunft in der VRS? *</h3>
+                                <textarea name="zukunftswuensche" placeholder="Deine Wünsche für die Zukunft..."
+                                    rows="3" required></textarea>
+                            </div>
+
+                            <!-- Frage 6 -->
+                            <div class="form-section">
+                                <h3>Wie zufrieden bist Du insgesamt mit den Arbeitsbedingungen bei der VRS? *</h3>
+                                <div class="rating-options">
+                                    <label class="rating-option">
+                                        <input type="radio" name="arbeitsbedingungen" value="5" required>
+                                        <span class="rating-label">⭐️⭐️⭐️⭐️⭐️ Sehr zufrieden</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="arbeitsbedingungen" value="4">
+                                        <span class="rating-label">⭐️⭐️⭐️⭐️ Zufrieden</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="arbeitsbedingungen" value="3">
+                                        <span class="rating-label">⭐️⭐️⭐️ Neutral</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="arbeitsbedingungen" value="2">
+                                        <span class="rating-label">⭐️⭐️ Unzufrieden</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="arbeitsbedingungen" value="1">
+                                        <span class="rating-label">⭐️ Sehr unzufrieden</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Frage 7 -->
+                            <div class="form-section">
+                                <h3>Welcher Bereich funktioniert deiner Meinung nach vorbildlich? *</h3>
+                                <input type="text" name="vorbildlicher_bereich"
+                                    placeholder="Welcher Bereich läuft besonders gut?" required>
+                            </div>
+
+                            <!-- Frage 8 -->
+                            <div class="form-section">
+                                <h3>Wie sehr fühlst Du dich in deiner täglichen Arbeit wertgeschätzt? *</h3>
+                                <div class="rating-options">
+                                    <label class="rating-option">
+                                        <input type="radio" name="wertschaetzung" value="5" required>
+                                        <span class="rating-label">⭐️⭐️⭐️⭐️⭐️ Sehr wertgeschätzt</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="wertschaetzung" value="4">
+                                        <span class="rating-label">⭐️⭐️⭐️⭐️ Wertgeschätzt</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="wertschaetzung" value="3">
+                                        <span class="rating-label">⭐️⭐️⭐️ Neutral</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="wertschaetzung" value="2">
+                                        <span class="rating-label">⭐️⭐️ Wenig wertgeschätzt</span>
+                                    </label>
+                                    <label class="rating-option">
+                                        <input type="radio" name="wertschaetzung" value="1">
+                                        <span class="rating-label">⭐️ Gar nicht wertgeschätzt</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Frage 9 -->
+                            <div class="form-section">
+                                <h3>Was könnte Dein persönliches Wohlbefinden und Deine Zufriedenheit bei der Arbeit
+                                    sofort verbessern? *</h3>
+                                <textarea name="wohlbefinden_verbesserung" placeholder="Was würde dir helfen?" rows="3"
+                                    required></textarea>
+                            </div>
+
+                            <!-- Frage 10 -->
+                            <div class="form-section">
+                                <h3>Welche drei Wörter beschreiben die VRS aus Deiner Sicht am besten? *</h3>
+                                <div class="word-inputs">
+                                    <input type="text" name="wort1" placeholder="Erstes Wort" required>
+                                    <input type="text" name="wort2" placeholder="Zweites Wort" required>
+                                    <input type="text" name="wort3" placeholder="Drittes Wort" required>
+                                </div>
+                            </div>
+
+                            <!-- Frage 11 -->
+                            <div class="form-section">
+                                <h3>Hast Du sonst noch Anmerkungen, die Du uns mitteilen möchtest? (Positiv sowie
+                                    Negativ)</h3>
+                                <textarea name="sonstige_anmerkungen" placeholder="Weitere Anmerkungen..."
+                                    rows="3"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-actions">
+                                <button type="submit" class="cta-button">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Umfrage absenden
+                                </button>
+                                <p style="margin-top: 10px; font-size: 0.9rem; color: var(--dark);">
+                                    * Pflichtfelder
+                                </p>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -292,7 +540,79 @@
                     dropdown.classList.remove('active');
                 });
             }
-        });
+
+            // Formular-Verarbeitung
+            document.getElementById('vrs-umfrage-form').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird übermittelt...';
+                submitButton.disabled = true;
+
+                const formData = new FormData(this);
+                const data = {
+                    zeitstempel: new Date().toLocaleString('de-DE'),
+                    besonders_gut: formData.get('besonders_gut'),
+                    herausforderungen: formData.get('herausforderungen'),
+                    verbesserungsvorschlaege: formData.get('verbesserungsvorschlaege'),
+                    kommunikation: formData.get('kommunikation'),
+                    zukunftswuensche: formData.get('zukunftswuensche'),
+                    arbeitsbedingungen: formData.get('arbeitsbedingungen'),
+                    vorbildlicher_bereich: formData.get('vorbildlicher_bereich'),
+                    wertschaetzung: formData.get('wertschaetzung'),
+                    wohlbefinden_verbesserung: formData.get('wohlbefinden_verbesserung'),
+                    drei_woerter: `${formData.get('wort1')}, ${formData.get('wort2')}, ${formData.get('wort3')}`,
+                    sonstige_anmerkungen: formData.get('sonstige_anmerkungen') || ''
+                };
+
+                try {
+                    // Hier die URL von deinem Google Apps Script einfügen
+                    const response = await fetch('https://script.google.com/macros/s/AKfycbzkcSmM_YEXCqawqz_R3rrtpLKJhoU5JP6utldcpp9Y6WRX33m4TZXe_mbeBkjrtRXG/exec', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        showSuccessMessage();
+                    } else {
+                        throw new Error('Fehler beim Senden');
+                    }
+                } catch (error) {
+                    showErrorMessage();
+                }
+            });
+
+            function showSuccessMessage() {
+                const form = document.getElementById('vrs-umfrage-form');
+                form.innerHTML = `
+                    <div class="success-message">
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success); margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--success); margin-bottom: 15px;">Vielen Dank für deine Teilnahme!</h3>
+                        <p>Deine Antworten wurden erfolgreich übermittelt und sind komplett anonym.</p>
+                        <button onclick="location.reload()" class="cta-button secondary" style="margin-top: 20px;">
+                            Neue Umfrage ausfüllen
+                        </button>
+                    </div>
+                `;
+            }
+
+            function showErrorMessage() {
+                const form = document.getElementById('vrs-umfrage-form');
+                form.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: var(--warning); margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--warning); margin-bottom: 15px;">Fehler beim Senden</h3>
+                        <p>Die Antworten konnten nicht übermittelt werden. Bitte versuche es erneut.</p>
+                        <button onclick="location.reload()" class="cta-button" style="margin-top: 20px;">
+                            Erneut versuchen
+                        </button>
+                    </div>
+                `;
+            }
+        }); // <-- Diese schließende Klammer war fehlend!
     </script>
 </body>
 
