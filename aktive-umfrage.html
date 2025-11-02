@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,21 +32,25 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
         .form-section {
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
+
         .form-section h3 {
             color: var(--primary);
             margin-bottom: 15px;
             font-size: 1.1rem;
         }
+
         .rating-options {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
+
         .rating-option {
             display: flex;
             align-items: center;
@@ -56,18 +61,23 @@
             transition: all 0.3s ease;
             border: 2px solid transparent;
         }
+
         .rating-option:hover {
             background: rgba(0, 158, 224, 0.1);
             border-color: var(--secondary);
         }
+
         .rating-option input {
             margin-right: 10px;
         }
+
         .rating-label {
             font-weight: 500;
             color: var(--dark);
         }
-        textarea, input[type="text"] {
+
+        textarea,
+        input[type="text"] {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
@@ -78,40 +88,50 @@
             background: white;
             resize: vertical;
         }
-        textarea:focus, input[type="text"]:focus {
+
+        textarea:focus,
+        input[type="text"]:focus {
             outline: none;
             border-color: var(--secondary);
             box-shadow: 0 0 0 3px rgba(0, 158, 224, 0.1);
         }
+
         .form-actions {
             text-align: center;
             margin-top: 30px;
         }
-        .success-message, .error-message {
+
+        .success-message,
+        .error-message {
             text-align: center;
             padding: 40px;
             background: white;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
         .word-inputs {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 10px;
         }
+
         @media (max-width: 768px) {
             .word-inputs {
                 grid-template-columns: 1fr;
             }
+
             .custom-form {
                 padding: 20px;
             }
         }
+
         .hidden-iframe {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
@@ -145,8 +165,11 @@
                                 <span>2025</span>
                             </a>
                             <ul class="year-menu">
-                                <li><a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/2025/Oktober-öffi/umfrage-oktober-2025.html">Oktober 2025</a></li>
-                                <li><a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/aktive-umfrage.html" class="active">Aktuelle Umfrage</a></li>
+                                <li><a
+                                        href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/2025/Oktober-öffi/umfrage-oktober-2025.html">Oktober
+                                        2025</a></li>
+                                <li><a href="https://vehrkehrsbetrieberheinstadtgl.github.io/VRS_Seite/aktive-umfrage.html"
+                                        class="active">Aktuelle Umfrage</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -171,8 +194,11 @@
                 <h1>Aktuelle Mitarbeiterumfrage</h1>
                 <p class="subtitle">Deine Stimme zählt - Gemeinsam gestalten wir die Zukunft der VRS</p>
                 <div class="intro-text">
-                    <p><strong>Hallo liebe Kolleginnen und Kollegen!</strong> Diese Umfrage ist komplett <strong>anonym</strong> - niemand kann nachverfolgen, wer was antwortet.</p>
-                    <p style="margin-top: 10px;">Die Umfrage dauert etwa 5-7 Minuten. Deine Meinung hilft uns, die VRS kontinuierlich zu verbessern.</p>
+                    <p><strong>Hallo liebe Kolleginnen und Kollegen!</strong> Diese Umfrage ist komplett
+                        <strong>anonym</strong> - niemand kann nachverfolgen, wer was antwortet.
+                    </p>
+                    <p style="margin-top: 10px;">Die Umfrage dauert etwa 5-7 Minuten. Deine Meinung hilft uns, die VRS
+                        kontinuierlich zu verbessern.</p>
                 </div>
                 <div class="survey-info">
                     <div class="info-item">
@@ -232,31 +258,33 @@
                     <div class="forms-wrapper">
                         <!-- Verstecktes Iframe für Formular-Submit -->
                         <iframe name="formResponse" class="hidden-iframe"></iframe>
-                        
-                        <form id="vrs-umfrage-form" class="custom-form" 
-                              action="https://script.google.com/macros/s/AKfycbzkcSmM_YEXCqawqz_R3rrtpLKJhoU5JP6utldcpp9Y6WRX33m4TZXe_mbeBkjrtRXG/exec" 
-                              method="POST"
-                              enctype="application/x-www-form-urlencoded">
-                            
+
+                        <form id="vrs-umfrage-form" class="custom-form"
+                            action="https://script.google.com/macros/s/AKfycbzkcSmM_YEXCqawqz_R3rrtpLKJhoU5JP6utldcpp9Y6WRX33m4TZXe_mbeBkjrtRXG/exec"
+                            method="POST">
+
                             <!-- Zeitstempel -->
                             <input type="hidden" name="zeitstempel" id="zeitstempel">
-                            
+
                             <!-- Frage 1 -->
                             <div class="form-section">
                                 <h3>Was läuft Deiner Meinung nach aktuell besonders gut? *</h3>
-                                <textarea name="besonders_gut" placeholder="Erzähl uns, was besonders gut läuft..." rows="3" required></textarea>
+                                <textarea name="besonders_gut" placeholder="Erzähl uns, was besonders gut läuft..."
+                                    rows="3" required></textarea>
                             </div>
 
                             <!-- Frage 2 -->
                             <div class="form-section">
                                 <h3>Wo siehst Du die größten Herausforderungen oder Probleme in der VRS? *</h3>
-                                <textarea name="herausforderungen" placeholder="Welche Probleme siehst du?" rows="3" required></textarea>
+                                <textarea name="herausforderungen" placeholder="Welche Probleme siehst du?" rows="3"
+                                    required></textarea>
                             </div>
 
                             <!-- Frage 3 -->
                             <div class="form-section">
                                 <h3>Welche konkreten Verbesserungsvorschläge hast Du für uns? *</h3>
-                                <textarea name="verbesserungsvorschlaege" placeholder="Deine konkreten Vorschläge..." rows="3" required></textarea>
+                                <textarea name="verbesserungsvorschlaege" placeholder="Deine konkreten Vorschläge..."
+                                    rows="3" required></textarea>
                             </div>
 
                             <!-- Frage 4 -->
@@ -289,7 +317,8 @@
                             <!-- Frage 5 -->
                             <div class="form-section">
                                 <h3>Was wünschst Du dir für die Zukunft in der VRS? *</h3>
-                                <textarea name="zukunftswuensche" placeholder="Deine Wünsche für die Zukunft..." rows="3" required></textarea>
+                                <textarea name="zukunftswuensche" placeholder="Deine Wünsche für die Zukunft..."
+                                    rows="3" required></textarea>
                             </div>
 
                             <!-- Frage 6 -->
@@ -322,7 +351,8 @@
                             <!-- Frage 7 -->
                             <div class="form-section">
                                 <h3>Welcher Bereich funktioniert deiner Meinung nach vorbildlich? *</h3>
-                                <input type="text" name="vorbildlicher_bereich" placeholder="Welcher Bereich läuft besonders gut?" required>
+                                <input type="text" name="vorbildlicher_bereich"
+                                    placeholder="Welcher Bereich läuft besonders gut?" required>
                             </div>
 
                             <!-- Frage 8 -->
@@ -354,8 +384,10 @@
 
                             <!-- Frage 9 -->
                             <div class="form-section">
-                                <h3>Was könnte Dein persönliches Wohlbefinden und Deine Zufriedenheit bei der Arbeit sofort verbessern? *</h3>
-                                <textarea name="wohlbefinden_verbesserung" placeholder="Was würde dir helfen?" rows="3" required></textarea>
+                                <h3>Was könnte Dein persönliches Wohlbefinden und Deine Zufriedenheit bei der Arbeit
+                                    sofort verbessern? *</h3>
+                                <textarea name="wohlbefinden_verbesserung" placeholder="Was würde dir helfen?" rows="3"
+                                    required></textarea>
                             </div>
 
                             <!-- Frage 10 -->
@@ -370,8 +402,10 @@
 
                             <!-- Frage 11 -->
                             <div class="form-section">
-                                <h3>Hast Du sonst noch Anmerkungen, die Du uns mitteilen möchtest? (Positiv sowie Negativ)</h3>
-                                <textarea name="sonstige_anmerkungen" placeholder="Weitere Anmerkungen..." rows="3"></textarea>
+                                <h3>Hast Du sonst noch Anmerkungen, die Du uns mitteilen möchtest? (Positiv sowie
+                                    Negativ)</h3>
+                                <textarea name="sonstige_anmerkungen" placeholder="Weitere Anmerkungen..."
+                                    rows="3"></textarea>
                             </div>
 
                             <!-- Submit Button -->
@@ -503,35 +537,38 @@
                 });
             }
 
-            // Zeitstempel setzen
-            document.getElementById('zeitstempel').value = new Date().toLocaleString('de-DE');
+            document.addEventListener('DOMContentLoaded', function () {
+                // Zeitstempel setzen
+                document.getElementById('zeitstempel').value = new Date().toLocaleString('de-DE');
 
-            // Formular absenden
-            document.getElementById('vrs-umfrage-form').addEventListener('submit', function(e) {
-                const submitButton = this.querySelector('button[type="submit"]');
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird übermittelt...';
-                submitButton.disabled = true;
-                
-                // Erfolgsmeldung nach 3 Sekunden anzeigen
-                setTimeout(() => {
-                    showSuccessMessage();
-                }, 3000);
+                // Einfaches Form-Submit
+                document.getElementById('vrs-umfrage-form').addEventListener('submit', function (e) {
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird übermittelt...';
+                    submitButton.disabled = true;
+
+                    // Nach 3 Sekunden Erfolg anzeigen (da wir die Antwort nicht abfangen können)
+                    setTimeout(() => {
+                        showSuccessMessage();
+                    }, 3000);
+                });
             });
 
             function showSuccessMessage() {
                 const form = document.getElementById('vrs-umfrage-form');
                 form.innerHTML = `
-                    <div class="success-message">
-                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success); margin-bottom: 20px;"></i>
-                        <h3 style="color: var(--success); margin-bottom: 15px;">Vielen Dank für deine Teilnahme!</h3>
-                        <p>Deine Antworten wurden erfolgreich übermittelt und sind komplett anonym.</p>
-                        <button onclick="location.reload()" class="cta-button secondary" style="margin-top: 20px;">
-                            Neue Umfrage ausfüllen
-                        </button>
-                    </div>
-                `;
+        <div class="success-message">
+            <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success); margin-bottom: 20px;"></i>
+            <h3 style="color: var(--success); margin-bottom: 15px;">Vielen Dank für deine Teilnahme!</h3>
+            <p>Deine Antworten wurden erfolgreich übermittelt.</p>
+            <button onclick="location.reload()" class="cta-button secondary">
+                Neue Umfrage ausfüllen
+            </button>
+        </div>
+    `;
             }
         });
     </script>
 </body>
+
 </html>
