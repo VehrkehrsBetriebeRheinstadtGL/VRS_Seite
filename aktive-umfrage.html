@@ -142,49 +142,33 @@
                     </div>
                 </div>
 
-                <!-- Google Forms Container -->
-                <div class="forms-container">
-                    <div class="forms-header">
-                        <h2><i class="fas fa-edit"></i> Aktuelle Umfrage</h2>
-                        <div class="survey-badge active">
-                            <i class="fas fa-star"></i>
-                            <span>Aktiv bis 31.12.2025</span>
-                        </div>
-                    </div>
+                <div class="forms-wrapper" id="formsContainer">
+                    <!-- Iframe Version -->
+                    <iframe id="googleFormIframe"
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSdMQU7e-np9eXNp1u6QaMlr5eSjKKzAPnPmNohOInt8NzpXSw/viewform?embedded=true"
+                        width="100%" height="2756" frameborder="0" marginheight="0" marginwidth="0"
+                        style="border-radius: 10px; display: none;" onload="showIframe()">
+                    </iframe>
 
-                    <div class="forms-wrapper">
-
-                        <iframe
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSdMQU7e-np9eXNp1u6QaMlr5eSjKKzAPnPmNohOInt8NzpXSw/viewform?embedded=true"
-                            width="640" height="1200" frameborder="0" marginheight="0" marginwidth="0"
-                            style="border-radius: 10px;" style="border-radius: 10px;"
-                            allow="autoplay; encrypted-media; fullscreen"
-                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups">>
-                            Wird geladen…
-                        </iframe>
-                        <!-- 
-                        
-                        <div class="forms-placeholder">
-                            <div class="placeholder-content">
-                                <i class="fas fa-google"
-                                    style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
-                                <h3>Google Forms Umfrage</h3>
-                                <p><strong>Hier das Google Forms einbetten:</strong></p>
-                                <ol style="text-align: left; max-width: 500px; margin: 20px auto;">
-                                    <li>In Google Forms auf "Senden" klicken</li>
-                                    <li>HTML-Code Symbol auswählen</li>
-                                    <li>Code kopieren und hier einfügen</li>
-                                </ol>
-                                <div class="placeholder-actions">
-                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMQU7e-np9eXNp1u6QaMlr5eSjKKzAPnPmNohOInt8NzpXSw/viewform"
-                                        target="_blank" class="cta-button secondary" style="margin-top: 20px;">
-                                        <i class="fas fa-external-link-alt"></i>
-                                        Zum Formular (vorübergehender Link)
-                                    </a>
-                                </div>
+                    <!-- Fallback Link Version -->
+                    <div class="forms-fallback" id="formsFallback">
+                        <div class="placeholder-content">
+                            <i class="fas fa-google"
+                                style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
+                            <h3>Google Forms Umfrage</h3>
+                            <p>Für die beste Erfahrung öffne die Umfrage in einem neuen Tab:</p>
+                            <div class="placeholder-actions">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMQU7e-np9eXNp1u6QaMlr5eSjKKzAPnPmNohOInt8NzpXSw/viewform"
+                                    target="_blank" class="cta-button">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Umfrage in neuem Tab öffnen
+                                </a>
+                                <button onclick="retryIframe()" class="cta-button secondary">
+                                    <i class="fas fa-redo"></i>
+                                    Erneut versuchen
+                                </button>
                             </div>
                         </div>
-                    -->
                     </div>
                 </div>
 
@@ -302,6 +286,32 @@
                     dropdown.classList.remove('active');
                 });
             }
+
+            function showIframe() {
+                const iframe = document.getElementById('googleFormIframe');
+                const fallback = document.getElementById('formsFallback');
+
+                // Wenn Iframe geladen werden kann, zeige es an
+                try {
+                    if (iframe.contentDocument || iframe.contentWindow.document) {
+                        iframe.style.display = 'block';
+                        fallback.style.display = 'none';
+                    }
+                } catch (e) {
+                    // Bei Fehler Fallback anzeigen
+                    iframe.style.display = 'none';
+                    fallback.style.display = 'block';
+                }
+            }
+
+            function retryIframe() {
+                const iframe = document.getElementById('googleFormIframe');
+                // URL neu laden mit Cache-Busting
+                iframe.src = iframe.src + '&retry=' + Date.now();
+            }
+
+            // Initial prüfen
+            setTimeout(showIframe, 2000);
         });
     </script>
 </body>
